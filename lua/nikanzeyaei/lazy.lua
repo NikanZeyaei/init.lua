@@ -36,6 +36,22 @@ require('lazy').setup({
   "mbbill/undotree",
 
   {
+    'olexsmir/gopher.nvim',
+    config = function(_, opts)
+      require("gopher").setup(opts)
+    end,
+    build = function()
+      vim.cmd [[silent! GoInstallDeps]]
+    end,
+  },
+
+  {
+    'christoomey/vim-tmux-navigator',
+    lazy = false,
+  },
+
+
+  {
     -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
     dependencies = {
@@ -137,7 +153,7 @@ require('lazy').setup({
   { 'numToStr/Comment.nvim', opts = {} },
 
   {
-      -- Fuzzy Finder (files, lsp, etc)
+    -- Fuzzy Finder (files, lsp, etc)
     'nvim-telescope/telescope.nvim',
     branch = '0.1.x',
     dependencies = {
@@ -162,4 +178,3 @@ require('lazy').setup({
   },
 
 }, {})
-
