@@ -22,6 +22,9 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup({
   -- NOTE: First, some plugins that don't require any configuration
 
+  -- procrasinate instead of actually working
+  'eandrju/cellular-automaton.nvim',
+
   -- Harpooooooooon
   'ThePrimeagen/harpoon',
 
