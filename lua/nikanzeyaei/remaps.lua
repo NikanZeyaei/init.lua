@@ -39,3 +39,9 @@ vim.keymap.set("n", "<leader>gsb", "<cmd> GoTagAdd bson <CR>", { desc = "Add bso
 vim.keymap.set("n", "<leader>gsy", "<cmd> GoTagAdd yaml <CR>", { desc = "Add yaml struct tags" })
 
 vim.keymap.set("n", "<leader>fml", "<cmd>CellularAutomaton make_it_rain<CR>")
+
+
+vim.keymap.set("n", "<C-h>", "<cmd> TmuxNavigateLeft<CR>")
+vim.keymap.set("n", "<C-j>", "<cmd> TmuxNavigateDown<CR>")
+vim.keymap.set("n", "<C-k>", "<cmd> TmuxNavigateUp<CR>")
+vim.keymap.set("n", "<C-l>", "<cmd> TmuxNavigateRight<CR>")
