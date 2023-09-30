@@ -146,10 +146,8 @@ require('lazy').setup({
   {
     -- Add indentation guides even on blank lines
     'lukas-reineke/indent-blankline.nvim',
-    opts = {
-      char = '┊',
-      show_trailing_blankline_indent = false,
-    },
+    main = "ibl",
+    opts = { indent = { char = "┊" } },
   },
 
   -- "gc" to comment visual regions/lines
