@@ -37,6 +37,7 @@ end)
 vim.keymap.set("n", "<leader>gsj", "<cmd> GoTagAdd json <CR>", { desc = "Add json struct tags" })
 vim.keymap.set("n", "<leader>gsb", "<cmd> GoTagAdd bson <CR>", { desc = "Add bson struct tags" })
 vim.keymap.set("n", "<leader>gsy", "<cmd> GoTagAdd yaml <CR>", { desc = "Add yaml struct tags" })
+vim.keymap.set("n", "<leader>gie", "<cmd> GoIfErr <CR>", { desc = "Add Go Error" })
 
 vim.keymap.set("n", "<leader>fml", "<cmd>CellularAutomaton make_it_rain<CR>")
 
