@@ -48,3 +48,4 @@ vim.keymap.set("n", "<C-k>", "<cmd> TmuxNavigateUp<CR>")
 vim.keymap.set("n", "<C-l>", "<cmd> TmuxNavigateRight<CR>")
 
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
+-- vim.keymap.set("n", "<leader>u", "<cmd>Telescope undo<cr>")
