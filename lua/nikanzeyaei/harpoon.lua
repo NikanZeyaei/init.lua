@@ -6,5 +6,3 @@ vim.keymap.set("n", "<C-e>", ui.toggle_quick_menu, { desc = "Harpoon: Toggle qui
 
 vim.keymap.set("n", "<C-q>", function() ui.nav_file(1) end)
 vim.keymap.set("n", "<C-w>", function() ui.nav_file(2) end)
--- vim.keymap.set("n", "<C-.>", function() ui.nav_file(3) end)
--- vim.keymap.set("n", "<C-/>", function() ui.nav_file(4) end)
