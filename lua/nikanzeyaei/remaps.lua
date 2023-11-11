@@ -50,6 +50,8 @@ vim.keymap.set("n", "<C-l>", "<cmd> TmuxNavigateRight<CR>")
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
 -- vim.keymap.set("n", "<leader>u", "<cmd>Telescope undo<cr>")
 
+vim.keymap.set("n", "<leader>fg", vim.cmd.Git)
+
 -- Toggle between current and previous buffer with backspace
 vim.keymap.set('n', '<bs>', '<c-^>\'”zz', { silent = true, noremap = true })
 
