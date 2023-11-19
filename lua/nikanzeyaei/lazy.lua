@@ -25,6 +25,8 @@ require('lazy').setup({
     'ThePrimeagen/vim-be-good'
   },
 
+  'simnalamburt/vim-mundo',
+
   {
     "iamcco/markdown-preview.nvim",
     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
