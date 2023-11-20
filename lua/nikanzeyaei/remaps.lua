@@ -57,3 +57,7 @@ vim.keymap.set("n", "<leader>fg", vim.cmd.Git)
 vim.keymap.set('n', '<bs>', '<c-^>\'”zz', { silent = true, noremap = true })
 
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
+
+vim.keymap.set("n", "<C-[>", "<cmd> diffget /2<CR>")
+vim.keymap.set("n", "<C-]>", "<cmd> diffget /3<CR>")
+
