@@ -61,3 +61,4 @@ vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 vim.keymap.set("n", "<C-[>", "<cmd> diffget /2<CR>")
 vim.keymap.set("n", "<C-]>", "<cmd> diffget /3<CR>")
 
+vim.keymap.set("n", "<leader>tt", "<cmd> TodoTelescope <CR>")
