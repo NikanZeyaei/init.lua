@@ -1,6 +1,7 @@
 -- I've stole most of these from theprimegen
 
 vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex, { desc = "Go to netrw" })
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
