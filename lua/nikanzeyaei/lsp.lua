@@ -47,7 +47,13 @@ end
 --  define the property 'filetypes' to the map in question.
 local servers = {
   -- denols = {},
-  tsserver = {},
+  tsserver = {
+    -- settings = {
+    --   setup = {
+    --     root_dir = require('lspconfig.util').root_pattern('.git')
+    --   }
+    -- }
+  },
   gopls = {},
   pylsp = {},
   jsonls = {},
@@ -83,6 +89,11 @@ mason_lspconfig.setup_handlers {
       filetypes = (servers[server_name] or {}).filetypes,
     }
   end
+}
+
+-- // TODO: Find out why typescript is still so slow
+require 'lspconfig'.tsserver.setup {
+  root_dir = require('lspconfig.util').root_pattern('.git')
 }
 
 -- [[ Configure nvim-cmp ]]

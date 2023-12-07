@@ -22,6 +22,14 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup({
 
   {
+    'Wansmer/symbol-usage.nvim',
+    event = 'BufReadPre', -- need run before LspAttach if you use nvim 0.9. On 0.10 use 'LspAttach'
+    config = function()
+      require('symbol-usage').setup()
+    end
+  },
+
+  {
     'windwp/nvim-autopairs',
     event = "InsertEnter",
     opts = {} -- this is equalent to setup({}) function
