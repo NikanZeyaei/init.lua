@@ -35,9 +35,9 @@ vim.keymap.set("n", "<leader><leader>", function()
     vim.cmd("so")
 end)
 
-vim.keymap.set("n", "<leader>gsj", "<cmd> GoTagAdd json <CR>", { desc = "Add json struct tags" })
-vim.keymap.set("n", "<leader>gsb", "<cmd> GoTagAdd bson <CR>", { desc = "Add bson struct tags" })
-vim.keymap.set("n", "<leader>gsy", "<cmd> GoTagAdd yaml <CR>", { desc = "Add yaml struct tags" })
+vim.keymap.set("n", "<leader>gsj", "<cmd> GoAddTag json <CR>", { desc = "Add json struct tags" })
+vim.keymap.set("n", "<leader>gsb", "<cmd> GoAddTag bson <CR>", { desc = "Add bson struct tags" })
+vim.keymap.set("n", "<leader>gsy", "<cmd> GoAddTag yaml <CR>", { desc = "Add yaml struct tags" })
 vim.keymap.set("n", "<leader>gie", "<cmd> GoIfErr <CR>", { desc = "Add Go Error" })
 vim.keymap.set("n", "<leader>gim", ":GoImpl ");
 

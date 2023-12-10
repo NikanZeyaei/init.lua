@@ -21,6 +21,20 @@ vim.opt.rtp:prepend(lazypath)
 --    as they will be available in your neovim runtime.
 require('lazy').setup({
   {
+    "ray-x/go.nvim",
+    dependencies = { -- optional packages
+      "ray-x/guihua.lua",
+      "neovim/nvim-lspconfig",
+      "nvim-treesitter/nvim-treesitter",
+    },
+    config = function()
+      require("go").setup()
+    end,
+    event = { "CmdlineEnter" },
+    ft = { "go", 'gomod' },
+    build = ':lua require("go.install").update_all_sync()' -- if you need to install/update all binaries
+  },
+  {
     'Wansmer/symbol-usage.nvim',
     event = 'BufReadPre', -- need run before LspAttach if you use nvim 0.9. On 0.10 use 'LspAttach'
     config = function()
@@ -80,15 +94,15 @@ require('lazy').setup({
   -- Undo tree thingy
   "mbbill/undotree",
 
-  {
-    'olexsmir/gopher.nvim',
-    config = function(_, opts)
-      require("gopher").setup(opts)
-    end,
-    build = function()
-      vim.cmd [[silent! GoInstallDeps]]
-    end,
-  },
+  -- {
+  --   'olexsmir/gopher.nvim',
+  --   config = function(_, opts)
+  --     require("gopher").setup(opts)
+  --   end,
+  --   build = function()
+  --     vim.cmd [[silent! GoInstallDeps]]
+  --   end,
+  -- },
 
   {
     'christoomey/vim-tmux-navigator',
