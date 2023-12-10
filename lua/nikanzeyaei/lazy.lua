@@ -20,7 +20,6 @@ vim.opt.rtp:prepend(lazypath)
 --  You can also configure plugins after the setup call,
 --    as they will be available in your neovim runtime.
 require('lazy').setup({
-
   {
     'Wansmer/symbol-usage.nvim',
     event = 'BufReadPre', -- need run before LspAttach if you use nvim 0.9. On 0.10 use 'LspAttach'
@@ -50,6 +49,10 @@ require('lazy').setup({
   },
 
   'simnalamburt/vim-mundo',
+
+  'tpope/vim-dadbod',
+  'kristijanhusak/vim-dadbod-ui',
+  'kristijanhusak/vim-dadbod-completion',
 
   {
     "iamcco/markdown-preview.nvim",
