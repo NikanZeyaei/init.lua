@@ -62,7 +62,11 @@ require('lazy').setup({
   },
 
   -- procrasinate instead of actually working
-  'eandrju/cellular-automaton.nvim',
+  {
+    "eandrju/cellular-automaton.nvim",
+    cmd = "CellularAutomaton",
+    config = require("nikanzeyaei.celluar_automation")
+  },
 
   -- Harpooooooooon
   {
