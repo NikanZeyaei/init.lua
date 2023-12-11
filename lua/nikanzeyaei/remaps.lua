@@ -2,7 +2,8 @@
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex, { desc = "Go to netrw" })
+-- vim.keymap.set("n", "<leader>pv", vim.cmd.Ex, { desc = "Open netrw" })
+vim.keymap.set("n", "<leader>pv", vim.cmd.Oil, { desc = "Open oil" })
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
@@ -41,7 +42,8 @@ vim.keymap.set("n", "<leader>gsy", "<cmd> GoTagAdd yaml <CR>", { desc = "Add yam
 vim.keymap.set("n", "<leader>gie", "<cmd> GoIfErr <CR>", { desc = "Add Go Error" })
 vim.keymap.set("n", "<leader>gim", ":GoImpl ");
 
-vim.keymap.set("n", "<leader>fml", "<cmd>CellularAutomaton make_it_rain<CR>")
+-- vim.keymap.set("n", "<leader>fml", "<cmd>CellularAutomaton make_it_rain<CR>")
+vim.keymap.set("n", "<leader>fml", ":CellularAutomaton ")
 
 
 vim.keymap.set("n", "<C-h>", "<cmd> TmuxNavigateLeft<CR>")
