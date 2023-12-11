@@ -47,6 +47,7 @@ end
 --  define the property 'filetypes' to the map in question.
 local servers = {
   tsserver = {},
+  eslint = {},
   clangd = {},
   gopls = {},
   pylsp = {},
