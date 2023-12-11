@@ -65,7 +65,11 @@ require('lazy').setup({
   'eandrju/cellular-automaton.nvim',
 
   -- Harpooooooooon
-  'ThePrimeagen/harpoon',
+  {
+    'ThePrimeagen/harpoon',
+    branch = "harpoon2",
+    requires = { { "nvim-lua/plenary.nvim" } }
+  },
 
   -- Git related plugins
   'tpope/vim-fugitive',
