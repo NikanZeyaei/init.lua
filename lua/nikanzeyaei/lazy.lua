@@ -140,6 +140,48 @@ require('lazy').setup({
   {
     -- Autocompletion
     'hrsh7th/nvim-cmp',
+    opts = function(_, opts)
+      local cmp = require('cmp')
+
+      cmp.setup({
+        formatting = {
+          format = function(entry, vim_item)
+            vim_item.menu = ({
+              rg = '[Rg]',
+              buffer = '[Buffer]',
+              nvim_lsp = '[LSP]',
+              vsnip = '[Snippet]',
+              path = '[Path]',
+              ['vim-dadbod-completion'] = '[DB]',
+            })[entry.source.name]
+            return vim_item
+          end,
+        },
+        sources = {
+          { name = 'nvim_lsp', group_index = 1 },
+          { name = 'vsnip',    group_index = 1 },
+          { name = 'buffer',   group_index = 2 },
+          { name = 'rg',       keyword_length = 3, group_index = 2 },
+          { name = 'path',     group_index = 1 },
+        },
+      })
+
+      local autocomplete_group = vim.api.nvim_create_augroup('vimrc_autocompletion', { clear = true })
+      vim.api.nvim_create_autocmd('FileType', {
+        pattern = { 'sql', 'mysql', 'plsql' },
+        callback = function()
+          cmp.setup.buffer({
+            sources = {
+              { name = 'vim-dadbod-completion' },
+              { name = 'buffer' },
+              { name = 'vsnip' },
+            },
+          })
+        end,
+        group = autocomplete_group,
+      })
+    end,
+
     dependencies = {
       -- LSP Support
       { 'neovim/nvim-lspconfig' },
@@ -153,6 +195,7 @@ require('lazy').setup({
       { 'saadparwaiz1/cmp_luasnip' },
       { 'hrsh7th/cmp-nvim-lsp' },
       { 'hrsh7th/cmp-nvim-lua' },
+      'hrsh7th/cmp-vsnip',
 
       -- Snippets
       { 'L3MON4D3/LuaSnip' },
@@ -167,6 +210,10 @@ require('lazy').setup({
 
       -- Adds a number of user-friendly snippets
       'rafamadriz/friendly-snippets',
+
+      'kristijanhusak/vim-dadbod-completion',
+
+      'lukas-reineke/cmp-rg'
     },
   },
 
