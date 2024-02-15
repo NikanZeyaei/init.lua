@@ -45,6 +45,8 @@ vim.keymap.set("n", "<leader>gim", ":GoImpl ");
 -- vim.keymap.set("n", "<leader>fml", "<cmd>CellularAutomaton make_it_rain<CR>")
 vim.keymap.set("n", "<leader>fml", ":CellularAutomaton ")
 
+vim.keymap.set("n", "<leader>db", "<cmd> DBUIToggle<CR>")
+
 
 vim.keymap.set("n", "<C-h>", "<cmd> TmuxNavigateLeft<CR>")
 vim.keymap.set("n", "<C-j>", "<cmd> TmuxNavigateDown<CR>")
