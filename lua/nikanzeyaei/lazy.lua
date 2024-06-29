@@ -21,10 +21,7 @@ vim.opt.rtp:prepend(lazypath)
 --    as they will be available in your neovim runtime.
 require('lazy').setup({
 
-  {
-    'Exafunction/codeium.vim',
-    event = 'BufEnter',
-  },
+  'mfussenegger/nvim-lint',
 
   'mg979/vim-visual-multi',
 

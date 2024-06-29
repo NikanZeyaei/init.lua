@@ -37,6 +37,22 @@ local on_attach = function(client, bufnr)
   end, { desc = 'Format current buffer with LSP' })
 end
 
+require('lint').linters_by_ft = {
+  typescript = { 'cspell' }
+}
+
+vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+  callback = function()
+    -- try_lint without arguments runs the linters defined in `linters_by_ft`
+    -- for the current filetype
+    require("lint").try_lint()
+
+    -- You can call `try_lint` with a linter name or a list of names to always
+    -- run specific linters, independent of the `linters_by_ft` configuration
+    require("lint").try_lint("cspell")
+  end,
+})
+
 -- Enable the following language servers
 --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
 --
@@ -61,6 +77,22 @@ local servers = {
   },
 }
 
+require ('lspconfig').sqls.setup {
+  on_attach = function(client, bufnr)
+    require('sqls').on_attach(client, bufnr) -- require sqls.nvim
+  end,
+  settings = {
+    sqls = {
+      connections = {
+        {
+          driver = 'postgresql',
+          dataSourceName = 'host=localhost port=5432 user=root password=root dbname=mydb sslmode=disable',
+        },
+      },
+    },
+  },
+}
+--
 -- Setup neovim lua configuration
 require('neodev').setup()
 
