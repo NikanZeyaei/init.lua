@@ -1,5 +1,3 @@
--- I've stole most of these from theprimegen
-
 vim.opt.guicursor = ""
 
 vim.opt.nu = true
@@ -31,7 +29,3 @@ vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50
 
 vim.opt.colorcolumn = "80"
-
-vim.api.nvim_set_hl(0, "Normal", { bg = "NONE" })
-vim.api.nvim_set_hl(0, "NormalNC", { link = "Normal" })
--- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })

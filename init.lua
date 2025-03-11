@@ -1,1 +1,1 @@
-require('nikanzeyaei')
+require("nikanzeyaei")
