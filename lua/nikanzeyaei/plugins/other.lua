@@ -16,4 +16,11 @@ return {
         -- Optional dependencies
         dependencies = { "nvim-tree/nvim-web-devicons" },
     },
+    {
+        -- Add indentation guides even on blank lines
+        'lukas-reineke/indent-blankline.nvim',
+        main = "ibl",
+        opts = { indent = { char = "┊" } },
+    },
+
 }
