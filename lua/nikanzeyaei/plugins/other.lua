@@ -22,5 +22,10 @@ return {
         main = "ibl",
         opts = { indent = { char = "┊" } },
     },
+    {
+        'windwp/nvim-autopairs',
+        event = "InsertEnter",
+        opts = {} -- this is equalent to setup({}) function
+    }
 
 }

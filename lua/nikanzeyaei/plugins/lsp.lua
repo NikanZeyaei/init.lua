@@ -1,12 +1,11 @@
 return {
     "neovim/nvim-lspconfig",
     dependencies = {
-        "stevearc/conform.nvim",
+        -- "stevearc/conform.nvim",
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
         "j-hui/fidget.nvim",
 
-        -- Autocompletion
         'hrsh7th/nvim-cmp',
         'hrsh7th/cmp-buffer',
         'hrsh7th/cmp-path',
@@ -24,12 +23,15 @@ return {
 
         'rafamadriz/friendly-snippets',
 
-        'lukas-reineke/cmp-rg'
+        -- 'lukas-reineke/cmp-rg'
     },
 
     config = function()
+        vim.diagnostic.config({ virtual_text = true, signs = true, underline = true })
+
         local cmp = require('cmp')
         local cmp_lsp = require("cmp_nvim_lsp")
+
         local capabilities = vim.tbl_deep_extend(
             "force",
             {},
@@ -79,16 +81,24 @@ return {
 
         local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
+        local luasnip = require("luasnip")
+
         cmp.setup({
             snippet = {
                 expand = function(args)
-                    require('luasnip').lsp_expand(args.body)
+                    luasnip.lsp_expand(args.body)
                 end,
             },
-            mapping = cmp.mapping.preset.insert({
-                ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-                ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
+            mapping = cmp.mapping.preset.insert {
+                ['<C-n>'] = cmp.mapping.select_next_item(),
+                ['<C-p>'] = cmp.mapping.select_prev_item(),
+                ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+                ['<C-f>'] = cmp.mapping.scroll_docs(4),
                 ['<C-Space>'] = cmp.mapping.complete {},
+                ['<CR>'] = cmp.mapping.confirm {
+                    behavior = cmp.ConfirmBehavior.Replace,
+                    select = true,
+                },
                 ['<Tab>'] = cmp.mapping(function(fallback)
                     if cmp.visible() then
                         cmp.select_next_item()
@@ -107,28 +117,28 @@ return {
                         fallback()
                     end
                 end, { 'i', 's' }),
-            }),
+            },
+            formatting = {
+                format = function(entry, vim_item)
+                    vim_item.menu = ({
+                        -- rg = '[Rg]',
+                        buffer = '[Buffer]',
+                        nvim_lsp = '[LSP]',
+                        vsnip = '[Snippet]',
+                        path = '[Path]',
+                    })[entry.source.name]
+                    return vim_item
+                end,
+            },
             sources = cmp.config.sources({
-                { name = 'nvim_lsp' },
                 { name = 'nvim_lsp' },
                 { name = 'vsnip', },
                 { name = 'buffer', },
-                { name = 'rg', },
+                -- { name = 'rg', },
                 { name = 'path', },
             }, {
                 { name = 'buffer' },
             })
-        })
-
-        vim.diagnostic.config({
-            float = {
-                focusable = false,
-                style = "minimal",
-                border = "rounded",
-                source = "always",
-                header = "",
-                prefix = "",
-            },
         })
     end
 
