@@ -4,6 +4,7 @@ return {
         local NikanZeyaei_Fugitive = vim.api.nvim_create_augroup("NikanZeyaei_Fugitive", {})
 
         local autocmd = vim.api.nvim_create_autocmd
+
         autocmd("BufWinEnter", {
             group = NikanZeyaei_Fugitive,
             pattern = "*",

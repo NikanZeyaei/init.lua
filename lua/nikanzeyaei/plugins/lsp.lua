@@ -34,7 +34,11 @@ return {
     },
 
     config = function()
+        require("neodev").setup()
+
         vim.diagnostic.config({ virtual_text = true, signs = true, underline = true })
+
+        require("luasnip.loaders.from_vscode").lazy_load()
 
         local cmp = require('cmp')
         local cmp_lsp = require("cmp_nvim_lsp")
@@ -46,6 +50,7 @@ return {
             cmp_lsp.default_capabilities()
         )
 
+        ---@diagnostic disable-next-line: unused-local
         local on_attach = function(client, bufnr)
             vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, { buffer = bufnr })
             vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { buffer = bufnr })
@@ -88,16 +93,9 @@ return {
         })
 
         local luasnip = require("luasnip")
+        luasnip.config.setup({})
 
         cmp.setup({
-
-            ['lua_ls'] = {
-                Lua = {
-                    workspace = { checkThirdParty = false },
-                    telemetry = { enable = false },
-                },
-            },
-
             snippet = {
                 expand = function(args)
                     luasnip.lsp_expand(args.body)
@@ -136,7 +134,7 @@ return {
             formatting = {
                 format = function(entry, vim_item)
                     vim_item.menu = ({
-                        -- rg = '[Rg]',
+                        rg = '[Rg]',
                         buffer = '[Buffer]',
                         nvim_lsp = '[LSP]',
                         vsnip = '[Snippet]',
@@ -149,7 +147,7 @@ return {
                 { name = 'nvim_lsp' },
                 { name = 'vsnip', },
                 { name = 'buffer', },
-                -- { name = 'rg', },
+                { name = 'rg', },
                 { name = 'path', },
             }, {
                 { name = 'buffer' },
