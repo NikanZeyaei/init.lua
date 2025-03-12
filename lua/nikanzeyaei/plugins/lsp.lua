@@ -74,22 +74,6 @@ return {
                         on_attach = on_attach
                     }
                 end,
-
-                ["lua_ls"] = function()
-                    local lspconfig = require("lspconfig")
-                    lspconfig.lua_ls.setup {
-                        capabilities = capabilities,
-                        on_attach = on_attach,
-                        settings = {
-                            Lua = {
-                                runtime = { version = "Lua 5.1" },
-                                diagnostics = {
-                                    globals = { "bit", "vim", "it", "describe", "before_each", "after_each" },
-                                }
-                            }
-                        }
-                    }
-                end,
             }
         })
 
@@ -126,7 +110,11 @@ return {
             }),
             sources = cmp.config.sources({
                 { name = 'nvim_lsp' },
-                { name = 'luasnip' },
+                { name = 'nvim_lsp' },
+                { name = 'vsnip', },
+                { name = 'buffer', },
+                { name = 'rg', },
+                { name = 'path', },
             }, {
                 { name = 'buffer' },
             })
