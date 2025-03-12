@@ -31,6 +31,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 vim.api.nvim_create_autocmd("VimEnter", {
     callback = function()
-        ColorMyCatpuccin()
+        ColorMyCatppuccin()
     end
 })

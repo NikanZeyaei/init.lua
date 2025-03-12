@@ -1,7 +1,7 @@
-function ColorMyCatpuccin()
+function ColorMyCatppuccin()
     vim.opt.background = "dark"
     vim.opt.termguicolors = true
-    vim.cmd.colorscheme("breakingbad")
+    vim.cmd.colorscheme("catppuccin")
 
     vim.api.nvim_set_hl(0, "Normal", { bg = "NONE" })
     vim.api.nvim_set_hl(0, "NormalNC", { link = "Normal" })
