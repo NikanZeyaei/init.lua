@@ -2,9 +2,16 @@ return {
     "neovim/nvim-lspconfig",
     dependencies = {
         -- "stevearc/conform.nvim",
-        "williamboman/mason.nvim",
+        { "williamboman/mason.nvim", config = true },
+
+        -- Useful status updates for LSP
+        -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
+        { 'j-hui/fidget.nvim',       tag = 'legacy', opts = {} },
+
+        -- Additional lua configuration, makes nvim stuff amazing!
+        'folke/neodev.nvim',
+
         "williamboman/mason-lspconfig.nvim",
-        "j-hui/fidget.nvim",
 
         'hrsh7th/nvim-cmp',
         'hrsh7th/cmp-buffer',
@@ -63,6 +70,7 @@ return {
         require("fidget").setup({})
         require("mason").setup()
         require("mason-lspconfig").setup({
+            automatic_installation = false,
             ensure_installed = {
                 "lua_ls",
                 "ts_ls",
@@ -79,11 +87,17 @@ return {
             }
         })
 
-        local cmp_select = { behavior = cmp.SelectBehavior.Select }
-
         local luasnip = require("luasnip")
 
         cmp.setup({
+
+            ['lua_ls'] = {
+                Lua = {
+                    workspace = { checkThirdParty = false },
+                    telemetry = { enable = false },
+                },
+            },
+
             snippet = {
                 expand = function(args)
                     luasnip.lsp_expand(args.body)
@@ -118,6 +132,7 @@ return {
                     end
                 end, { 'i', 's' }),
             },
+            ---@diagnostic disable-next-line: missing-fields
             formatting = {
                 format = function(entry, vim_item)
                     vim_item.menu = ({
