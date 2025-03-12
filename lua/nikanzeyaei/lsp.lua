@@ -49,9 +49,9 @@ local servers = {
   ts_ls = {},
   eslint = {},
   gopls = {},
-  pylsp = {},
-  jsonls = {},
-  yamlls = {},
+  -- pylsp = {},
+  -- jsonls = {},
+  -- yamlls = {},
   lua_ls = {
     Lua = {
       workspace = { checkThirdParty = false },
