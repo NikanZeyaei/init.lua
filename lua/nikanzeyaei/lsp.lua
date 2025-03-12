@@ -46,9 +46,8 @@ end
 --  If you want to override the default filetypes that your language server will attach to you can
 --  define the property 'filetypes' to the map in question.
 local servers = {
-  tsserver = {},
+  ts_ls = {},
   eslint = {},
-  clangd = {},
   gopls = {},
   pylsp = {},
   jsonls = {},
@@ -103,7 +102,7 @@ mason_lspconfig.setup_handlers {
 }
 
 -- // TODO: Find out why typescript is still so slow
-require 'lspconfig'.tsserver.setup {
+require 'lspconfig'.ts_ls.setup {
   root_dir = require('lspconfig.util').root_pattern('.git')
 }
 
